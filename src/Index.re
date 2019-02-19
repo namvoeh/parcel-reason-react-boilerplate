@@ -1,2 +1,2 @@
-ReactDOMRe.renderToElementWithId(<Greeting name="Parcel Reason React" />, "root");
+ReactDOMRe.renderToElementWithId(<Greeting name="Parcel Reason React Template" />, "root");
 
