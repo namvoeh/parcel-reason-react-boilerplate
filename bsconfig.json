@@ -21,7 +21,8 @@
     "reason-react",
     "@glennsl/bs-json",
     "@glennsl/bs-jest",
-    "bs-fetch"
+    "bs-fetch",
+    "bs-css"
   ],
   "refmt": 3,
   "warnings": {
