@@ -5,7 +5,7 @@ What included:
 * Bundler: ParcelJS (Hot Module Reload, Assets, etc)
 * Reason-React
 * Bs-css (Emotion.sh binding)
-* GrapQL
+* GraphQL
 * Router
 * Remote-data for Restful API
 
