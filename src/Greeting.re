@@ -5,8 +5,7 @@ require("./App.css");
 module Styles = {
   open Css;
 
-  let header =
-    style([fontWeight(bold), fontSize(rem(1.5))]);
+  let header = style([fontWeight(bold), fontSize(rem(1.5))]);
 };
 
 let logo = requireURI("./logo.svg");
