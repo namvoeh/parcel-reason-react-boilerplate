@@ -1,18 +1,17 @@
-type t =
-  | Home
-  | RandomDog
-  | NotFound;
+module type Config = {
+  type route;
 
-type route = t;
+  let toUrl: route => string;
+  let toRoute: ReasonReact.Router.url => route;
+};
 
-let routeToUrl =
-  fun
-  | Home => "/"
-  | RandomDog => "/random-me-a-dog"
-  | NotFound => "/404";
+module Config = {
+  type route =
+    | Home
+    | RandomDog
+    | NotFound;
 
-let urlToRoute: ReasonReact.Router.url => t =
-  url =>
+  let toRoute = (url: ReasonReact.Router.url) =>
     switch (url.path) {
     | [""]
     | []
@@ -20,3 +19,25 @@ let urlToRoute: ReasonReact.Router.url => t =
     | ["random-me-a-dog"] => RandomDog
     | _ => NotFound
     };
+
+  let toUrl =
+    fun
+    | Home => "/"
+    | RandomDog => "/random-me-a-dog"
+    | NotFound => "/404";
+};
+
+module Link = {
+  let component = ReasonReact.statelessComponent("Link");
+  let make = (~route, children) => {
+    ...component,
+    render: _self => {
+      let href = Config.toUrl(route);
+      let onClick = e => {
+        ReactEvent.Mouse.preventDefault(e);
+        ReasonReact.Router.push(href);
+      };
+      <a href onClick> {children |> ReasonReact.array} </a>;
+    },
+  };
+};
