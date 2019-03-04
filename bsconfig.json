@@ -22,7 +22,11 @@
     "@glennsl/bs-json",
     "@glennsl/bs-jest",
     "bs-fetch",
-    "bs-css"
+    "bs-css",
+    "reason-apollo"
+  ],
+  "ppx-flags": [
+    "graphql_ppx/ppx"
   ],
   "refmt": 3,
   "warnings": {

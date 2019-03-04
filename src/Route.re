@@ -9,6 +9,7 @@ module Config = {
   type route =
     | Home
     | RandomDog
+    | GraphQLSample
     | NotFound;
 
   let toRoute = (url: ReasonReact.Router.url) =>
@@ -17,12 +18,14 @@ module Config = {
     | []
     | ["/"] => Home
     | ["random-me-a-dog"] => RandomDog
+    | ["graphql-sample"] => GraphQLSample
     | _ => NotFound
     };
 
   let toUrl =
     fun
     | Home => "/"
+    | GraphQLSample => "/graphql-sample"
     | RandomDog => "/random-me-a-dog"
     | NotFound => "/404";
 };

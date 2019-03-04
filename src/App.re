@@ -8,6 +8,10 @@ module Home = {
       <div>
         <Greeting name="Parcel Reason React Template" />
         <Link route=RandomDog> {ReasonReact.string("Dog")} </Link>
+        <br />
+        <Link route=GraphQLSample>
+          {ReasonReact.string("GraphQL Sample")}
+        </Link>
       </div>,
   };
 };
@@ -24,6 +28,7 @@ let make = _children => {
         switch (currentRoute) {
         | Home => <Home />
         | RandomDog => <RandomDog />
+        | GraphQLSample => <GraphQLSample />
         | NotFound => <div> {ReasonReact.string("Not Found")} </div>
         }
       }
