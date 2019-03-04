@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build ./public/index.html",
-    "dev": "parcel ./public/index.html"
+    "dev": "parcel ./public/index.html",
+    "get-schema": "send-introspection-query"
   },
   "keywords": [],
   "author": "",
@@ -19,11 +20,25 @@
     "bsb-js": "^1.1.7",
     "cssnano": "^4.1.10",
     "parcel-bundler": "^1.11.0",
+    "graphql_ppx": "^0.2.8",
     "reason-react": "^0.5.3"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
+    "apollo-link": "^1.2.8",
+    "apollo-link-context": "^1.0.14",
+    "apollo-link-error": "^1.1.7",
+    "apollo-link-http": "^1.5.11",
+    "apollo-link-ws": "^1.0.14",
+    "apollo-upload-client": "^10.0.0",
     "bs-css": "^8.0.2",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-apollo": "^2.5.1",
+    "react-dom": "^16.8.2",
+    "reason-apollo": "^0.15.2",
+    "subscriptions-transport-ws": "^0.9.15"
   }
 }

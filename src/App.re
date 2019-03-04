@@ -1,38 +1,36 @@
-type state = {currentRoute: Route.t};
+open Route;
 
-type action =
-  | Navigate(Route.t);
+module Home = {
+  let component = ReasonReact.statelessComponent("Home");
+  let make = _children => {
+    ...component,
+    render: _self =>
+      <div>
+        <Greeting name="Parcel Reason React Template" />
+        <Link route=RandomDog> {ReasonReact.string("Dog")} </Link>
+        <br />
+        <Link route=GraphQLSample>
+          {ReasonReact.string("GraphQL Sample")}
+        </Link>
+      </div>,
+  };
+};
 
-let component = ReasonReact.reducerComponent("app");
+module AppRouter = Router.Create(Route.Config);
+
+let component = ReasonReact.statelessComponent("app");
 
 let make = _children => {
   ...component,
-  initialState: () => {
-    currentRoute:
-      ReasonReact.Router.dangerouslyGetInitialUrl() |> Route.urlToRoute,
-  },
-  reducer: (action, _state) =>
-    switch (action) {
-    | Navigate(route) => ReasonReact.Update({currentRoute: route})
-    },
-  didMount: ({send, onUnmount}) => {
-    let watcherID =
-      ReasonReact.Router.watchUrl(url =>
-        Route.urlToRoute(url)->Navigate->send
-      );
-    onUnmount(() => ReasonReact.Router.unwatchUrl(watcherID));
-  },
-  render: ({state}) => {
-    switch (state.currentRoute) {
-    | Home =>
-      <div>
-        <Greeting name="Parcel Reason React Template" />
-        <a href={Route.routeToUrl(RandomDog)}>
-          {ReasonReact.string("Dog")}
-        </a>
-      </div>
-    | RandomDog => <div> {ReasonReact.string("RandomDog")} </div>
-    | NotFound => <div> {ReasonReact.string("Not Found")} </div>
-    };
-  },
+  render: _self =>
+    <AppRouter
+      render={({currentRoute}) =>
+        switch (currentRoute) {
+        | Home => <Home />
+        | RandomDog => <RandomDog />
+        | GraphQLSample => <GraphQLSample />
+        | NotFound => <div> {ReasonReact.string("Not Found")} </div>
+        }
+      }
+    />,
 };
