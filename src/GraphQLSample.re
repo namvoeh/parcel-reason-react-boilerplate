@@ -1,7 +1,7 @@
 module VideoGames = [%graphql
   {|
-  query VideoGames {
-    videoGames {
+  query {
+    allVideoGames {
       id
       title
       developer
@@ -28,7 +28,7 @@ let make = _children => {
           switch (result) {
           | Loading => <div> {"Loading video games!" |> str} </div>
           | Error(error) => <div> {error##message |> str} </div>
-          | Data(data) => <VideoGameList items=data##videoGames />
+          | Data(data) => <VideoGameList items=data##allVideoGames />
           }
         }
       </VideoGamesQuery>

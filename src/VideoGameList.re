@@ -5,8 +5,8 @@ let component = ReasonReact.statelessComponent("VideoGameList");
 
 module CompleteGame = [%graphql
   {|
-  mutation CompleteGame($id: ID!) {
-    completeGame(id: $id) {
+  mutation {
+    updateVideoGame(id: "cjsuffxxf1ebo01769co29gmh", completed: true) {
       id
       completed
     }
@@ -32,11 +32,7 @@ let make = (~items, _children) => {
                       id={item.id}
                       type_="checkbox"
                       checked={item.completed}
-                      onChange={_event => {
-                        let completeGame = CompleteGame.make(~id=item.id, ());
-                        mutate(~variables=completeGame##variables, ())
-                        |> ignore;
-                      }}
+                      onChange={_event => mutate() |> ignore}
                     />
                     <label
                       htmlFor={item.id}

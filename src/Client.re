@@ -2,7 +2,7 @@ let inMemoryCache = ApolloInMemoryCache.createInMemoryCache();
 
 let httpLink =
   ApolloLinks.createHttpLink(
-    ~uri="https://video-game-api-pvibqsoxza.now.sh/graphql",
+    ~uri="https://api.graph.cool/simple/v1/cjsuekufj1r0r0151chg63jsi",
     (),
   );
 
