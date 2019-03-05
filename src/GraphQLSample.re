@@ -1,6 +1,6 @@
 module VideoGames = [%graphql
   {|
-  query {
+  query allVideoGames {
     allVideoGames {
       id
       title
